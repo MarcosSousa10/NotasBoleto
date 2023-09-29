@@ -1,4 +1,5 @@
 package br.com.OthondeCarvalho.NotasBoletos.src.Controller;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,15 +17,28 @@ public class ControllerRepositoryChaveNfe {
     @Autowired
     private RepositoryChaveNfe ChaveNfe;
 
-    @GetMapping("/ChaveNfe")
-    public ResponseEntity<Object> StatusDoPedido(@RequestParam(value = "cnpj", defaultValue = "") String cnpj) {
-        Optional<ChaveNfe> Optional = ChaveNfe.ChaveNfeNotasemitidasamenosde1ano(cnpj); 
+    // @GetMapping("/ChaveNfe")
+    // public ResponseEntity<Object> StatusDoPedido(@RequestParam(value = "cnpj", defaultValue = "") String cnpj) {
+    //     Optional<ChaveNfe> Optional = ChaveNfe.ChaveNfeNotasemitidasamenosde1ano(cnpj); 
         
-        if (Optional.isPresent()) {
-            return ResponseEntity.ok(Optional.get());
+    //     if (Optional.isPresent()) {
+    //         return ResponseEntity.ok(Optional.get());
+    //     } else {
+    //         String errorMessage = "CPF OU CNPJ NÃO ENCONTRADO";
+    //         return ResponseEntity.status(HttpStatus.OK).body(errorMessage);
+    //     }
+    // }
+    @GetMapping("/ChaveNfe")
+    public ResponseEntity<?> StatusDoPedido(@RequestParam(value = "cnpj", defaultValue = "") String cnpj) {
+        List<ChaveNfe> listaDeChaves = ChaveNfe.ChaveNfeNotasemitidasamenosde1ano(cnpj);
+        
+        if (!listaDeChaves.isEmpty()) {
+            return ResponseEntity.ok(listaDeChaves);
         } else {
             String errorMessage = "CPF OU CNPJ NÃO ENCONTRADO";
-            return ResponseEntity.status(HttpStatus.OK).body(errorMessage);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
         }
     }
+    
+
 }

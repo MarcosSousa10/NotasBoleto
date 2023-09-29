@@ -1,5 +1,6 @@
 package br.com.OthondeCarvalho.NotasBoletos.src.repository.app;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,5 +24,5 @@ public interface RepositorySegundaViaBoleto extends JpaRepository<SegundaViaBole
          "d.dtcancel is null and "+
          "t.codcob in ('BRAS', 'BK', 'BBCS') "+
          "order by t.dtvenc", nativeQuery = true)
-  Optional<SegundaViaBoleto> QuerySegundaViaBoleto(String cnpj);
+  List<SegundaViaBoleto> QuerySegundaViaBoleto(String cnpj);
 }
