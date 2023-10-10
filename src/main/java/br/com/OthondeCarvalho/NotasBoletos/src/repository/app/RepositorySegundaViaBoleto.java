@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import br.com.OthondeCarvalho.NotasBoletos.src.model.app.SegundaViaBoleto;
 
-public interface RepositorySegundaViaBoleto extends JpaRepository<SegundaViaBoleto,Long>{
+public interface RepositorySegundaViaBoleto extends JpaRepository<SegundaViaBoleto,String>{
          @Query(value = "select  C.CGCENT AS CPF, t.codcli as CodCliente, c.cliente as "+ 
          "Nome, d.numnota as Numnota, d.dtsaida as DtEmissao ,t.duplic as "+
          "Duplicata, t.dtvenc as Vencimento,  t.valor as Valor, t.codbarra "+

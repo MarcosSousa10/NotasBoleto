@@ -40,7 +40,7 @@ public class ControllerRepositorySegundaViaBoleto {
         if (!Optional.isEmpty()) {
             return ResponseEntity.ok(Optional);
         } else {
-            String errorMessage = "CPF OU CNPJ NÃO ENCONTRADO";
+            String errorMessage = "BOLETO NÃO ENCONTRADO";
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
         }
      }  

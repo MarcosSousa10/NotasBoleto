@@ -35,7 +35,7 @@ public class ControllerRepositoryChaveNfe {
         if (!listaDeChaves.isEmpty()) {
             return ResponseEntity.ok(listaDeChaves);
         } else {
-            String errorMessage = "CPF OU CNPJ NÃO ENCONTRADO";
+            String errorMessage = "CHAVE NFE NÃO ENCONTRADA";
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
         }
     }

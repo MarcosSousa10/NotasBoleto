@@ -22,13 +22,14 @@ import lombok.Setter;
 @Table(name = "pcclient")
 public class SegundaViaBoleto {
     @Id
+    private String codbarraspagamento;
+    private Long numnota;
     private Long codcliente;
     private String cpf;
     private String nome;
-    private Long numnota;
+    
     private Date dtemissao;
     private Long duplicata;
     private Date vencimento;
     private Double valor;
-    private BigDecimal codbarraspagamento;
 }

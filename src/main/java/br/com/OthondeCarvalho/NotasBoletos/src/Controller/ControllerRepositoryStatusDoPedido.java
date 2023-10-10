@@ -28,7 +28,7 @@ public class ControllerRepositoryStatusDoPedido {
             return ResponseEntity.ok(campanhaOptional.get());
         } else {
             String errorMessage = "Pedido Não Encontrado";
-            return ResponseEntity.status(HttpStatus.OK).body(errorMessage);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
         }
     }
 }
